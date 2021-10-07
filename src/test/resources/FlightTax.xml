@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Movimentos>
+  <Documento>
+    <Operador>Robert Bush</Operador>
+    <TipoDocumento>TXS</TipoDocumento>
+    <Ano>2021</Ano>
+    <Numero>1435</Numero>
+    <Movimento>
+      <NumMov>2021028741</NumMov>
+      <Num_voo>1258</Num_voo>
+      <Matricula>HBJJH</Matricula>
+      <DataMov>27-08-2021</DataMov>
+      <HoraMov>16:05</HoraMov>
+      <Origem>LPPR</Origem>
+      <Destino>STR</Destino>
+      <TipoPax>SCH</TipoPax>
+      <Quant>6</Quant>
+      <Taxa>1.5300</Taxa>
+      <Total>9.1800</Total>
+    </Movimento>
+    <Movimento>
+      <NumMov>2021029604</NumMov>
+      <Num_voo>3471</Num_voo>
+      <Matricula>HBJTG</Matricula>
+      <DataMov>31-08-2021</DataMov>
+      <HoraMov>15:59</HoraMov>
+      <Origem>LPPR</Origem>
+      <Destino>STR</Destino>
+      <TipoPax>SCH</TipoPax>
+      <Quant>6</Quant>
+      <Taxa>1.5300</Taxa>
+      <Total>9.1800</Total>
+    </Movimento>
+  </Documento>
+</Movimentos>
