@@ -2,12 +2,10 @@ import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
 class XmlSuperParserTests {
-    private val parser = XmlSuperParser()
 
     @Test
     fun testTollXmlFile() {
-        parser.setFile("./src/test/resources/Toll.xml")
-        val xml = parser.getXmlGenericDom()
+        val xml = XmlSuperParser("./src/test/resources/Toll.xml").getXmlGenericDom()
 
         Assertions.assertEquals("EXTRACTO", xml.name)
 
@@ -35,8 +33,7 @@ class XmlSuperParserTests {
 
     @Test
     fun testBooksXmlFile() {
-        parser.setFile("./src/test/resources/Books.xml")
-        val xml = parser.getXmlGenericDom()
+        val xml = XmlSuperParser("./src/test/resources/Books.xml").getXmlGenericDom()
 
         Assertions.assertEquals("catalog", xml.name)
 
@@ -50,8 +47,7 @@ class XmlSuperParserTests {
 
     @Test
     fun testFlightTaxXmlFile() {
-        parser.setFile("./src/test/resources/FlightTax.xml")
-        val xml = parser.getXmlGenericDom()
+        val xml = XmlSuperParser("./src/test/resources/FlightTax.xml").getXmlGenericDom()
 
         Assertions.assertEquals("Movimentos", xml.name)
         Assertions.assertEquals("Robert Bush", xml.children[0].finalChildren[0].value)

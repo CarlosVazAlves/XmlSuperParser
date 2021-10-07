@@ -1,19 +1,14 @@
 import java.io.File
 
-class XmlSuperParser {
+class XmlSuperParser(path: String) {
 
     private lateinit var xmlVersion: String
     private lateinit var xmlEncoding: String
-    private lateinit var xmlFile: File
+    private val xmlFile: File = File(path)
     private lateinit var xmlToStringList: List<String>
     private val tagsCurrentlyOpen: ArrayList<String> = ArrayList()
 
-    fun setFile(path: String) {
-        setFile(File(path))
-    }
-
-    fun setFile(file: File) {
-        xmlFile = file
+    init {
         loadXmlToStringList()
     }
 
