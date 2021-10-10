@@ -102,7 +102,7 @@ class XmlSuperParser(path: String) {
         tagsCurrentlyOpen.add(name)
 
         if (hasParameters) {
-            populateCurrentXmlElementParameters(currentXmlElement, tag.parameters!!)
+            currentXmlElement.properties = (tag.parameters as MutableMap<String, String>?)!!
         }
 
         xmlStringList.removeAt(0)
@@ -176,16 +176,5 @@ class XmlSuperParser(path: String) {
         }
 
         return parseToGenericXmlElement(xmlStringList, xmlElementToContinue)
-    }
-
-    /**
-     * Populates currentXmlElement with parameters passed as argument
-     */
-    private fun populateCurrentXmlElementParameters(currentXmlElement: XmlElement, parameters: Map<String, String>) {
-        val keys = parameters.keys
-        for (key in keys) {
-            currentXmlElement.properties.add(key)
-            currentXmlElement.propertiesValue.add(parameters.getValue(key))
-        }
     }
 }

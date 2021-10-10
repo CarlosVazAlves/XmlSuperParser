@@ -37,10 +37,10 @@ class XmlSuperParserTests {
 
         Assertions.assertEquals("catalog", xml.name)
 
-        Assertions.assertEquals("bk101", xml.children[0].propertiesValue[0])
+        Assertions.assertEquals("bk101", xml.children[0].properties["id"])
         Assertions.assertEquals("Fantasy", xml.children[1].finalChildren[2].value)
 
-        Assertions.assertEquals("bk112", xml.children[11].propertiesValue[0])
+        Assertions.assertEquals("bk112", xml.children[11].properties["id"])
         Assertions.assertEquals("Computer", xml.children[11].finalChildren[2].value)
 
     }
