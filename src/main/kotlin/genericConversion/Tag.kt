@@ -1,3 +1,7 @@
+package genericConversion
+
+import XmlSuperParserInvalidTagTypeException
+
 class Tag(private val line: String) {
 
     val tagType: TagType
@@ -13,8 +17,9 @@ class Tag(private val line: String) {
     }
 
     /**
-     * Checks if this TagType fits any type defined within enum
-     * Throws XmlSuperParserInvalidTagTypeException if no match
+     * Checks if this genericConversion.TagType fits any type defined within enum
+     * @return TagType - Identifies the tag type and returns it
+     * @Throws XmlSuperParserInvalidTagTypeException if TagType does not match any known format
      */
     private fun checkType(): TagType {
         if (isOpeningAndClosingTag()) return TagType.OPENING_AND_CLOSING_TAG
@@ -26,6 +31,7 @@ class Tag(private val line: String) {
 
     /**
      * Questionable way to determine if is an Opening and Closing Tag
+     * @return Boolean - Returns true if is an "OpeningAndClosingTag"
      */
     private fun isOpeningAndClosingTag(): Boolean {
         var greater = 0
@@ -41,6 +47,7 @@ class Tag(private val line: String) {
 
     /**
      * Questionable way to determine if is a Closing Tag
+     * @return Boolean - Returns true if is an "ClosingTag"
      */
     private fun isClosingTag(): Boolean {
         return !line.contains(' ') && line.contains('/')
@@ -48,13 +55,15 @@ class Tag(private val line: String) {
 
     /**
      * Questionable way to determine if is an Opening Tag with parameters
+     * @return Boolean - Returns true if is an "OpeningTagWithParameters"
      */
     private fun isOpeningTagWithParameters(): Boolean {
         return line.contains(' ') && line.contains('\"') && line.contains('=')
     }
 
     /**
-     * Questionable way to determine if is an Opening Tag without parameters
+     * Questionable way to determine if is an Opening genericConversion.Tag without parameters
+     * @return Boolean - Returns true if is an "OpeningTagWithoutParameters"
      */
     private fun isOpeningTagWithoutParameters(): Boolean {
         return !line.contains(' ') && !line.contains('/')

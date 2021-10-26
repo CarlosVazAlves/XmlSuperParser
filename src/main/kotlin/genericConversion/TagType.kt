@@ -1,3 +1,5 @@
+package genericConversion
+
 enum class TagType() {
 
     /**
