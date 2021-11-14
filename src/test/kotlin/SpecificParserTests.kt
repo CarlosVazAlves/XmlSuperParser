@@ -3,9 +3,11 @@ import org.junit.jupiter.api.Test
 
 class SpecificParserTests {
 
+    private val xmlSuperParser = XmlSuperParser()
+
     @Test
-    fun testTollXmlFile() {
-        val xml = XmlSuperParser("./src/test/resources/Toll.xml").startSpecificParsing(Extracto::class.java)
+    fun testTollXmlFileSpecificParsing() {
+        val xml = xmlSuperParser.parser.loadFileToParser("./src/test/resources/Toll.xml").startSpecificParsing(Extracto::class.java)
 
         Assertions.assertEquals("015101413/09/2021", xml.id)
 
@@ -24,8 +26,8 @@ class SpecificParserTests {
     }
 
     @Test
-    fun testBooksXmlFile() {
-        val xml = XmlSuperParser("./src/test/resources/Books.xml").startSpecificParsing(Catalog::class.java)
+    fun testBooksXmlFileSpecificParsing() {
+        val xml = xmlSuperParser.parser.loadFileToParser("./src/test/resources/Books.xml").startSpecificParsing(Catalog::class.java)
 
         Assertions.assertEquals(12, xml.books.count())
 
@@ -38,8 +40,8 @@ class SpecificParserTests {
     }
 
     @Test
-    fun testFlightTaxXmlFile() {
-        val xml = XmlSuperParser("./src/test/resources/FlightTax.xml").startSpecificParsing(Movimentos::class.java)
+    fun testFlightTaxXmlFileSpecificParsing() {
+        val xml = xmlSuperParser.parser.loadFileToParser("./src/test/resources/FlightTax.xml").startSpecificParsing(Movimentos::class.java)
 
         Assertions.assertEquals("2021", xml.documentos[0].ano)
         Assertions.assertEquals("Robert Bush", xml.documentos[0].operador)

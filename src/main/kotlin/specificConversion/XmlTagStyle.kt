@@ -71,6 +71,7 @@ enum class XmlTagStyle {
 
     /**
      * Converts chars after UnderScores to UpperCase
+     *
      * @param charArray - Tag name converted in charArray for easier processing
      * @param tagName - Original Tag name to keep track of remaining underScores
      */

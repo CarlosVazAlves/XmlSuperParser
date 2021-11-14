@@ -1,6 +1,6 @@
 package genericConversion
 
-enum class TagType() {
+enum class TagType {
 
     /**
      * Ex: <CLIENTE id="514408852">

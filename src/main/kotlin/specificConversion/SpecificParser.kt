@@ -10,6 +10,7 @@ class SpecificParser(private val xmlGenericDom: XmlElement) {
     /**
      * Receives a class type, creates a new instance of it,
      * and populates it with the generic conversion data
+     *
      * @param userClass - user specified type
      * @return T - new instance populated of user specified type
      */
@@ -22,6 +23,7 @@ class SpecificParser(private val xmlGenericDom: XmlElement) {
 
     /**
      * Starts converting the genericXml to specified type by the user
+     *
      * @param genericXml - already populated generic XmlElement
      * @param specificXml - instance of user specified type to populate
      */
@@ -41,6 +43,7 @@ class SpecificParser(private val xmlGenericDom: XmlElement) {
     /**
      * Populates properties through reflection
      * It must exist a setter with the property name, otherwise an exception will be thrown
+     *
      * @param genericXmlProperties - MutableMap<String, String> of properties
      * @param specificXml - instance of user specified type to populate
      * @throws XmlSuperParserInvalidFileException in case of absent setter
@@ -60,6 +63,7 @@ class SpecificParser(private val xmlGenericDom: XmlElement) {
     /**
      * Populates the final children through reflection
      * It must exist a setter with the child name, otherwise an exception will be thrown
+     *
      * @param genericXmlFinalChildren - List of FinalChildren (XmlFinalElement)
      * @param specificXml - instance of user specified type to populate
      * @throws XmlSuperParserInvalidFileException in case of absent setter
@@ -79,6 +83,7 @@ class SpecificParser(private val xmlGenericDom: XmlElement) {
      * Populates the children list through reflection
      * It must exist a setter of a list, otherwise an exception will be thrown
      * A new conversion starts recursively to populate final children, children and properties for each child
+     *
      * @param genericXmlChildren - List of Children (XmlElement)
      * @param specificXml - instance of user specified type to populate
      * @throws XmlSuperParserInvalidFileException in case of absent setter
@@ -112,6 +117,7 @@ class SpecificParser(private val xmlGenericDom: XmlElement) {
 
     /**
      * Converts the Tag name to a normalized format (camelCase)
+     *
      * @param inputString - String to be formatted
      * @return String - New formatted String
      */
@@ -122,6 +128,7 @@ class SpecificParser(private val xmlGenericDom: XmlElement) {
 
     /**
      * Identifies the current Tag name format
+     *
      * @param tag - String containing Tag to be analyzed
      * @return XmlTagStyle - The identified XmlTagStyle
      */

@@ -3,9 +3,14 @@ import org.junit.jupiter.api.Test
 
 class GenericParserTests {
 
+    private val xmlSuperParser = XmlSuperParser()
+
     @Test
-    fun testTollXmlFile() {
-        val xml = XmlSuperParser("./src/test/resources/Toll.xml").startGenericParsing()
+    fun testTollXmlFileGenericParsing() {
+        val xml = xmlSuperParser.parser.loadFileToParser("./src/test/resources/Toll.xml").startGenericParsing()
+
+        Assertions.assertEquals("1.0", xmlSuperParser.parser.getXmlVersion())
+        Assertions.assertEquals(Charsets.ISO_8859_1.name(), xmlSuperParser.parser.getXmlEncoding())
 
         Assertions.assertEquals("EXTRACTO", xml.name)
 
@@ -32,8 +37,11 @@ class GenericParserTests {
     }
 
     @Test
-    fun testBooksXmlFile() {
-        val xml = XmlSuperParser("./src/test/resources/Books.xml").startGenericParsing()
+    fun testBooksXmlFileGenericParsing() {
+        val xml = xmlSuperParser.parser.loadFileToParser("./src/test/resources/Books.xml").startGenericParsing()
+
+        Assertions.assertEquals("1.0", xmlSuperParser.parser.getXmlVersion())
+        Assertions.assertEquals(Charsets.ISO_8859_1.name(), xmlSuperParser.parser.getXmlEncoding())
 
         Assertions.assertEquals("catalog", xml.name)
 
@@ -46,8 +54,11 @@ class GenericParserTests {
     }
 
     @Test
-    fun testFlightTaxXmlFile() {
-        val xml = XmlSuperParser("./src/test/resources/FlightTax.xml").startGenericParsing()
+    fun testFlightTaxXmlFileGenericParsing() {
+        val xml = xmlSuperParser.parser.loadFileToParser("./src/test/resources/FlightTax.xml").startGenericParsing()
+
+        Assertions.assertEquals("1.0", xmlSuperParser.parser.getXmlVersion())
+        Assertions.assertEquals(Charsets.UTF_8.name(), xmlSuperParser.parser.getXmlEncoding())
 
         Assertions.assertEquals("Movimentos", xml.name)
         Assertions.assertEquals("Robert Bush", xml.children[0].finalChildren[0].value)
@@ -57,6 +68,5 @@ class GenericParserTests {
 
         Assertions.assertEquals("3471", xml.children[0].children[1].finalChildren[1].value)
         Assertions.assertEquals("1.5300", xml.children[0].children[1].finalChildren[9].value)
-
     }
 }

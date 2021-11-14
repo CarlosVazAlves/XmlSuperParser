@@ -18,6 +18,7 @@ class Tag(private val line: String) {
 
     /**
      * Checks if this genericConversion.TagType fits any type defined within enum
+     *
      * @return TagType - Identifies the tag type and returns it
      * @Throws XmlSuperParserInvalidTagTypeException if TagType does not match any known format
      */
@@ -31,6 +32,7 @@ class Tag(private val line: String) {
 
     /**
      * Questionable way to determine if is an Opening and Closing Tag
+     *
      * @return Boolean - Returns true if is an "OpeningAndClosingTag"
      */
     private fun isOpeningAndClosingTag(): Boolean {
@@ -47,6 +49,7 @@ class Tag(private val line: String) {
 
     /**
      * Questionable way to determine if is a Closing Tag
+     *
      * @return Boolean - Returns true if is an "ClosingTag"
      */
     private fun isClosingTag(): Boolean {
@@ -55,6 +58,7 @@ class Tag(private val line: String) {
 
     /**
      * Questionable way to determine if is an Opening Tag with parameters
+     *
      * @return Boolean - Returns true if is an "OpeningTagWithParameters"
      */
     private fun isOpeningTagWithParameters(): Boolean {
@@ -63,6 +67,7 @@ class Tag(private val line: String) {
 
     /**
      * Questionable way to determine if is an Opening genericConversion.Tag without parameters
+     *
      * @return Boolean - Returns true if is an "OpeningTagWithoutParameters"
      */
     private fun isOpeningTagWithoutParameters(): Boolean {

@@ -9,6 +9,7 @@ class GenericParser(private val xmlToStringList: List<String>) {
 
     /**
      * Will parse the XML file loaded into a generic DOM (returns a XmlElement)
+     *
      * @return XmlElement - Populated XmlElement
      */
     fun getXmlGenericDom(): XmlElement {
@@ -18,6 +19,7 @@ class GenericParser(private val xmlToStringList: List<String>) {
 
     /**
      * Starts parsing the XmlStringList line by line recursively
+     *
      * @param xmlStringList - XML file converted to a String List
      * @param currentXmlElement - currently being populated XmlElement
      * @return XmlElement - Same XmlElement received as parameter but with extra data from XML file
@@ -38,7 +40,8 @@ class GenericParser(private val xmlToStringList: List<String>) {
      * Parses an Opening genericConversion Tag
      * ex: <CLIENTE id="514408852"> with parameters
      * ex: <IDENTIFICADOR> without parameters
-     * @param tag - Xml line from List converted into Tag type
+     *
+     * @param tag - XML line from List converted into Tag type
      * @param xmlStringList - XML file converted to a String List
      * @param currentXmlElement - currently being populated XmlElement
      * @param hasParameters - Boolean to identify if is as opening tag with or without parameters
@@ -58,15 +61,20 @@ class GenericParser(private val xmlToStringList: List<String>) {
         val xmlElementToContinue: XmlElement
 
         val nextTagLine = Tag(xmlStringList[0])
-        if (nextTagLine.tagType == TagType.OPENING_TAG_WITH_PARAMETERS || nextTagLine.tagType == TagType.OPENING_TAG_WITHOUT_PARAMETERS ) {
-            val newXmlElement = XmlElement()
-            currentXmlElement.children.add(newXmlElement)
-            newXmlElement.parent = currentXmlElement
-            xmlElementToContinue = newXmlElement
-        } else if (nextTagLine.tagType == TagType.CLOSING_TAG) {
-            xmlElementToContinue = currentXmlElement.parent!!
-        } else {
-            xmlElementToContinue = currentXmlElement
+
+        when (nextTagLine.tagType) {
+            TagType.OPENING_TAG_WITH_PARAMETERS, TagType.OPENING_TAG_WITHOUT_PARAMETERS -> {
+                val newXmlElement = XmlElement()
+                currentXmlElement.children.add(newXmlElement)
+                newXmlElement.parent = currentXmlElement
+                xmlElementToContinue = newXmlElement
+            }
+            TagType.CLOSING_TAG -> {
+                xmlElementToContinue = currentXmlElement.parent!!
+            }
+            TagType.OPENING_AND_CLOSING_TAG -> {
+                xmlElementToContinue = currentXmlElement
+            }
         }
 
         return parseToGenericXmlElement(xmlStringList, xmlElementToContinue)
@@ -75,7 +83,8 @@ class GenericParser(private val xmlToStringList: List<String>) {
     /**
      * Parses an Opening and Closing genericConversion Tag
      * <SAIDA>Torres Novas</SAIDA>
-     * @param tag - Xml line from List converted into Tag type
+     *
+     * @param tag - XML line from List converted into Tag type
      * @param xmlStringList - XML file converted to a String List
      * @param currentXmlElement - currently being populated XmlElement
      * @return XmlElement - Same XmlElement received as parameter but with extra data from XML file
@@ -105,7 +114,8 @@ class GenericParser(private val xmlToStringList: List<String>) {
     /**
      * Parses a Closing genericConversion Tag
      * </TRANSACCAO>
-     * @param tag - Xml line from List converted into Tag type
+     *
+     * @param tag - XML line from List converted into Tag type
      * @param xmlStringList - XML file converted to a String List
      * @param currentXmlElement - currently being populated XmlElement
      * @return XmlElement - Same XmlElement received as parameter but with extra data from XML file
