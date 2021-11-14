@@ -8,7 +8,7 @@ If several people show interest, I'm considering an expansion to further add som
 This is what I have in mind:
 - Reads a XML file and returns a generic XmlElement - Done
 - Reads a XML file and returns an instance of an object specified by the user - Done
-- Converts a generic XmlElement to a XML file
+- Converts a generic XmlElement to a XML file - Done
 - Converts an instance of an object specified by the user to a XML file
 - Use parallel parsing to increase performance in large files (still wondering if I want to fight such battle....)<br><br>
 
@@ -66,10 +66,16 @@ A class settled in Kotlin should look like this, considering that the setters ar
 
 ![image](https://user-images.githubusercontent.com/55634585/139148176-26cd65f0-7f19-46b1-aa6d-99405f62e267.png)<br><br>
 
-Using Java, the setters must defined by the programmer. In this situation, the variable name is irrelevant, only the setter is important:<br>
+Using Java, the setters must be defined by the programmer. In this situation, the variable name is irrelevant, only the setter is important:<br>
 
 ![image](https://user-images.githubusercontent.com/55634585/139148855-958f5013-6653-492c-90ab-5f5c2e75a46e.png)<br><br>
 
-In case of a setter was not properly named, an exception will be thrown specifying which setter was not found, for easier debugging.
+In case of a setter was not properly named, an exception will be thrown specifying which setter was not found, for easier debugging.<br><br><br>
+
+## Generic Serialization<br>
+
+Generic serialization is pretty self explanatory. It converts a XmlElement into a XML file.<br>
+User must specify the path and file name, as well as the charset intended for the XML file.<br>
+It is also possible to choose if the XML file will have indentation or not.<br>
 
 
